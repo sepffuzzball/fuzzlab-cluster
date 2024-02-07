@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ./flux.yaml
   - ./cluster.yaml
-#  - ./cluster-gitops.yaml
+  - ./cluster-gitops.yaml
