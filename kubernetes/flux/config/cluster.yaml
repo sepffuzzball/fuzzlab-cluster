@@ -16,6 +16,31 @@ spec:
     # include kubernetes directory
     !/kubernetes
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster
+  namespace: flux-system
+spec:
+  interval: 30m
+  path: ./kubernetes/flux
+  prune: true
+  wait: false
+  sourceRef:
+    kind: GitRepository
+    name: home-kubernetes
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+      - kind: Secret
+        name: cluster-secrets
+---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/gitrepository-source-v1.json
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -33,10 +58,11 @@ spec:
     # include specific directories for testing
     !/kubernetes
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster
+  name: cluster-apps
   namespace: flux-system
 spec:
   interval: 30m
@@ -45,7 +71,7 @@ spec:
   wait: false
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: fuzzlab-gitops
   decryption:
     provider: sops
     secretRef:
