@@ -43,7 +43,7 @@ metadata:
   namespace: kube-system
 spec:
   concurrencyPolicy: Forbid
-  schedule: '* */2 * * *' # run every 2 hours
+  schedule: '0 * * * *' # run every hour
   jobTemplate:
     spec:
       backoffLimit: 2 # this has very low chance of failing, as all this does
