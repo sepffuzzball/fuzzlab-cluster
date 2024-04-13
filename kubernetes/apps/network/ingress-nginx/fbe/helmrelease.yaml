@@ -29,7 +29,7 @@ spec:
       replicaCount: 1
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_FBE}"
+          external-dns-fbe.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_FBE}"
           io.cilium/lb-ipam-ips: "10.0.2.14"
         externalTrafficPolicy: Cluster
       ingressClassResource:
@@ -76,7 +76,7 @@ spec:
           labelSelector:
             matchLabels:
               app.kubernetes.io/name: ingress-nginx
-              app.kubernetes.io/instance: ingress-nginx-internal
+              app.kubernetes.io/instance: ingress-nginx-fbe
               app.kubernetes.io/component: controller
       resources:
         requests:
