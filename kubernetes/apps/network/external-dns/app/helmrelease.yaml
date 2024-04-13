@@ -73,7 +73,7 @@ spec:
     fullnameOverride: *app
     provider: cloudflare
     env:
-      - name: CF_API_TOKENW
+      - name: CF_API_TOKEN
         valueFrom:
           secretKeyRef:
             name: external-dns-secret
