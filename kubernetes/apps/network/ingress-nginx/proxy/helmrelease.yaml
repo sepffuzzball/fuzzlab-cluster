@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: powerwall
+  namespace: default
+spec:
+  type: ExternalName
+  externalName: 10.0.5.200
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # annotation to use cert-manager to request a Let's Encrypt certificate
+    #cert-manager.io/cluster-issuer: letsencrypt-production
+    # Set this when the backend is listening on HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # Set this when the backend listens on a different URL
+    nginx.ingress.kubernetes.io/upstream-vhost: 10.0.5.200
+    # Will this actually add the DNS record?
+    external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN_FBE}"
+  name: proxy-demo
+  namespace: default
+spec:
+  ingressClassName: fbe
+  rules:
+    - host: &host powerwall.${SECRET_DOMAIN_FBE}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: powerwall
+                port:
+                  number: 443
+  tls:
+    - hosts:
+        - *host
