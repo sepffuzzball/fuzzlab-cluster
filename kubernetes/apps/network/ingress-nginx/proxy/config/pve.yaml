@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host pve.${SECRET_DOMAIN_FBE}
+    - host: pve.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
@@ -30,7 +30,7 @@ spec:
                 name: pve
                 port:
                   number: 8006
-    - host: &host pve00.${SECRET_DOMAIN_FBE}
+    - host: pve00.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
@@ -40,7 +40,7 @@ spec:
                 name: pve
                 port:
                   number: 8006
-    - host: &host proxmox.${SECRET_DOMAIN_FBE}
+    - host: proxmox.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
@@ -52,4 +52,6 @@ spec:
                   number: 8006
   tls:
     - hosts:
-        - *host
+        - pve.${SECRET_DOMAIN_FBE}
+        - pve00.${SECRET_DOMAIN_FBE}
+        - proxmox.${SECRET_DOMAIN_FBE}
