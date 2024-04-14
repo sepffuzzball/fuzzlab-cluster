@@ -55,7 +55,7 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host adguard01.${SECRET_DOMAIN_FBE}
+    - host: &host adguard02.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
