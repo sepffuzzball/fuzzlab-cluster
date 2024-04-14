@@ -154,7 +154,7 @@ spec:
               service:
                 name: deluge
                 port:
-                  number: 8112
+                  number: 443
   tls:
     - hosts:
         - *host
