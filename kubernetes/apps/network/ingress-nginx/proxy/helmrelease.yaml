@@ -158,3 +158,43 @@ spec:
   tls:
     - hosts:
         - *host
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pve
+  namespace: default
+spec:
+  type: ExternalName
+  externalName: ${PVE_ADDR}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # annotation to use cert-manager to request a Let's Encrypt certificate
+    #cert-manager.io/cluster-issuer: letsencrypt-production
+    # Set this when the backend is listening on HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # Set this when the backend listens on a different URL
+    nginx.ingress.kubernetes.io/upstream-vhost: ${PVE_ADDR}
+    # Will this actually add the DNS record?
+    external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
+  name: proxy-pve
+  namespace: default
+spec:
+  ingressClassName: fbe
+  rules:
+    - host: &host pve.${SECRET_DOMAIN_FBE}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: pve
+                port:
+                  number: 8006
+  tls:
+    - hosts:
+        - *host
