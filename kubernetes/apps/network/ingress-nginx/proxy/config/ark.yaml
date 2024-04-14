@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host ark.{SECRET_DOMAIN_FBE}
+    - host: &host ark.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
