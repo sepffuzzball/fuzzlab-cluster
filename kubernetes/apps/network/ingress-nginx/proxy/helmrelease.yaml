@@ -19,8 +19,8 @@ metadata:
     # Set this when the backend listens on a different URL
     nginx.ingress.kubernetes.io/upstream-vhost: 10.0.5.200
     # Will this actually add the DNS record?
-    external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN_FBE}"
-  name: proxy-demo
+    external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
+  name: proxy-powerwall
   namespace: default
 spec:
   ingressClassName: fbe
