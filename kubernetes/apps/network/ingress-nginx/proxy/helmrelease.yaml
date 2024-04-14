@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: powerwall
+  name: power
   namespace: default
 spec:
   type: ExternalName
@@ -25,14 +25,14 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host powerwall.${SECRET_DOMAIN_FBE}
+    - host: &host power.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
             path: /
             backend:
               service:
-                name: powerwall
+                name: power
                 port:
                   number: 443
   tls:
