@@ -20,7 +20,17 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host frigate.${SECRET_DOMAIN_FBE}
+    - host: doorbell.${SECRET_DOMAIN_FBE}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: frigate
+                port:
+                  number: 5000
+    - host: frigate.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
@@ -32,4 +42,5 @@ spec:
                   number: 5000
   tls:
     - hosts:
-        - *host
+        - doorbell.${SECRET_DOMAIN_FBE}
+        - frigate.${SECRET_DOMAIN_FBE}
