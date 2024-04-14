@@ -13,9 +13,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    # Set this when the backend listens on a different URL
     nginx.ingress.kubernetes.io/upstream-vhost: ${DELUGE_ADDR}
-    # Will this actually add the DNS record?
     external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
   name: proxy-deluge
   namespace: default
