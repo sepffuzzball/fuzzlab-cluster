@@ -118,3 +118,43 @@ spec:
   tls:
     - hosts:
         - *host
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: deluge
+  namespace: default
+spec:
+  type: ExternalName
+  externalName: ${DELUGE_ADDR}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # annotation to use cert-manager to request a Let's Encrypt certificate
+    #cert-manager.io/cluster-issuer: letsencrypt-production
+    # Set this when the backend is listening on HTTPS
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    # Set this when the backend listens on a different URL
+    nginx.ingress.kubernetes.io/upstream-vhost: ${DELUGE_ADDR}
+    # Will this actually add the DNS record?
+    external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
+  name: proxy-deluge
+  namespace: default
+spec:
+  ingressClassName: fbe
+  rules:
+    - host: &host deluge.${SECRET_DOMAIN_FBE}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: deluge
+                port:
+                  number: 8112
+  tls:
+    - hosts:
+        - *host
