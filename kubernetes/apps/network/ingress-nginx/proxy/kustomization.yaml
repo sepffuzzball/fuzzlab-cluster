@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./config/adguard.yaml
+  - ./config/cloud.yaml
+  - ./config/powerwall.yaml
+  - ./config/pve.yaml
