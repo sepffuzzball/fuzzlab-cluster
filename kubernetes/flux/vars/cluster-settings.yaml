@@ -26,3 +26,4 @@ data:
   PVE_ADDR: "10.0.1.30"
   SWAG_ADDR: "10.0.2.111"
   TIMEZONE: "America/New_York"
+  WORKKVM_ADDR: "10.0.2.120"
