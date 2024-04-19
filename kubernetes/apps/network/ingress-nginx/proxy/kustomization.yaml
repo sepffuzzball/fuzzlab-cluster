@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./config/adguard.yaml
   - ./config/ark.yaml
+  - ./config/bitwarden.yaml
   #- ./config/cloud.yaml
   - ./config/dat.yaml
   - ./config/dockge.yaml
