@@ -30,6 +30,16 @@ spec:
                 name: notes
                 port:
                   number: 3000
+    - host: webnotes.${SECRET_DOMAIN_FBE}
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: notes
+                port:
+                  number: 3001
     - host: files.${SECRET_DOMAIN_FBE}
       http:
         paths:
@@ -44,3 +54,4 @@ spec:
     - hosts:
         - notes.${SECRET_DOMAIN_FBE}
         - files.${SECRET_DOMAIN_FBE}
+        - webnotes.${SECRET_DOMAIN_FBE}
