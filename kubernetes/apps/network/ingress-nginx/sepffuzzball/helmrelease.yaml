@@ -30,7 +30,7 @@ spec:
       service:
         annotations:
           external-dns-sepf.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_SEPF}"
-          io.cilium/lb-ipam-ips: "10.0.2.16"
+          io.cilium/lb-ipam-ips: "10.0.2.19"
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: sepf
