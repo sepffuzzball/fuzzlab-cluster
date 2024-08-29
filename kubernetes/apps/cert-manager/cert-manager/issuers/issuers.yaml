@@ -19,6 +19,11 @@ spec:
             - "${SECRET_DOMAIN}"
             - "${SECRET_DOMAIN_FBE}"
             - "${SECRET_DOMAIN_SEPF}"
+            - "${SECRET_DOMAIN_FBEC}"
+            - "${SECRET_DOMAIN_FBS}"
+            - "${SECRET_DOMAIN_FBM}"
+            - "${SECRET_DOMAIN_KMC}"
+
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -41,3 +46,7 @@ spec:
             - "${SECRET_DOMAIN}"
             - "${SECRET_DOMAIN_FBE}"
             - "${SECRET_DOMAIN_SEPF}"
+            - "${SECRET_DOMAIN_FBEC}"
+            - "${SECRET_DOMAIN_FBS}"
+            - "${SECRET_DOMAIN_FBM}"
+            - "${SECRET_DOMAIN_KMC}"
