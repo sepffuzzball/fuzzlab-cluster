@@ -20,16 +20,16 @@ metadata:
 spec:
   ingressClassName: sepf
   rules:
-    - host: &host ${SECRET_DOMAIN_SEPF}
+    - host: ${SECRET_DOMAIN_SEPF}
       http:
         paths:
           - pathType: Prefix
+            path: /
             backend:
               service:
                 name: sepf
                 port:
                   number: 880
-            path: /
   tls:
     - hosts:
-        - *host
+        - ${SECRET_DOMAIN_SEPF}
