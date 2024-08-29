@@ -6,21 +6,21 @@ metadata:
   namespace: default
 spec:
   type: ExternalName
-  externalName: 10.0.2.60
+  externalName: ${DOCKGE_ADDR}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/upstream-vhost: 10.0.2.60
-    external-dns.alpha.kubernetes.io/target: external."${SECRET_DOMAIN}"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/upstream-vhost: ${DOCKGE_ADDR}
+    external-dns-sepf.alpha.kubernetes.io/target: "${SECRET_DOMAIN_SEPF}"
   name: proxy-sepf
   namespace: default
 spec:
   ingressClassName: sepf
   rules:
-    - host: sepf.${SECRET_DOMAIN}
+    - host: &host ${SECRET_DOMAIN_SEPF}
       http:
         paths:
           - pathType: Prefix
@@ -32,4 +32,4 @@ spec:
                   number: 880
   tls:
     - hosts:
-        - sepf.${SECRET_DOMAIN}
+        - *host
