@@ -14,13 +14,13 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/upstream-vhost: 10.0.2.60
-    external-dns-sepf.alpha.kubernetes.io/target: "${SECRET_DOMAIN_SEPF}"
+    external-dns.alpha.kubernetes.io/target: external."${SECRET_DOMAIN}"
   name: proxy-sepf
   namespace: default
 spec:
   ingressClassName: sepf
   rules:
-    - host: ${SECRET_DOMAIN_SEPF}
+    - host: sepf.${SECRET_DOMAIN}
       http:
         paths:
           - pathType: Prefix
@@ -32,4 +32,4 @@ spec:
                   number: 880
   tls:
     - hosts:
-        - ${SECRET_DOMAIN_SEPF}
+        - sepf.${SECRET_DOMAIN}
