@@ -5,7 +5,7 @@ resources:
   - ./namespace.yaml
   - ./cloudflare-ddns-fbe/ks.yaml
   - ./cloudflare-ddns-fbec/ks.yaml
-  - ./cloudflare-ddns-sepf/ks.yaml
+  #- ./cloudflare-ddns-sepf/ks.yaml
   - ./cloudflared/ks.yaml
   - ./echo-server/ks.yaml
   - ./external-dns/ks.yaml
