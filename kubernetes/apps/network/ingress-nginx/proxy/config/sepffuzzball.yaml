@@ -14,13 +14,13 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/upstream-vhost: ${DOCKGE_ADDR}
-    external-dns-sepf.alpha.kubernetes.io/target: "${SECRET_DOMAIN_SEPF}"
+    external-dns-fbe.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
   name: proxy-sepf
   namespace: default
 spec:
   ingressClassName: sepf
   rules:
-    - host: &host ${SECRET_DOMAIN_SEPF}
+    - host: &host sepf.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
