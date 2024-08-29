@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: ingress-nginx-sepf
-  namespace: network
 spec:
   interval: 30m
   chart:
@@ -23,13 +22,16 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: cloudflared
+      namespace: network
   values:
     fullnameOverride: ingress-nginx-sepf
     controller:
       replicaCount: 1
       service:
         annotations:
-        #  external-dns-sepf.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_SEPF}"
+          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_SEPF}"
           io.cilium/lb-ipam-ips: "10.0.2.19"
         externalTrafficPolicy: Cluster
       ingressClassResource:
