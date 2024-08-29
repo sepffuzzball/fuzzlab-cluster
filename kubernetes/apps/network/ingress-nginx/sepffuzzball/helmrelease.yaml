@@ -34,7 +34,7 @@ spec:
         externalTrafficPolicy: Cluster
       ingressClassResource:
         name: sepf
-        default: true
+        default: false
         controllerValue: k8s.io/sepf
       admissionWebhooks:
         objectSelector:
