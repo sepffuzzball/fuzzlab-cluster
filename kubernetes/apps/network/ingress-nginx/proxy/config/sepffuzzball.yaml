@@ -23,13 +23,12 @@ spec:
     - host: &host ${SECRET_DOMAIN_SEPF}
       http:
         paths:
-          - pathType: Prefix
-            path: /
-            backend:
+          - backend:
               service:
                 name: sepf
                 port:
                   number: 880
+            path: /
   tls:
     - hosts:
         - *host
