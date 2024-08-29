@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: home
+  name: sepf
   namespace: default
 spec:
   type: ExternalName
@@ -27,7 +27,7 @@ spec:
             path: /
             backend:
               service:
-                name: home
+                name: sepf
                 port:
                   number: 880
   tls:
