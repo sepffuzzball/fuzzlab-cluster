@@ -23,7 +23,8 @@ spec:
     - host: &host ${SECRET_DOMAIN_SEPF}
       http:
         paths:
-          - backend:
+          - pathType: Prefix
+            backend:
               service:
                 name: sepf
                 port:
