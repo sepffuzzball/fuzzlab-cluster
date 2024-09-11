@@ -8,6 +8,7 @@ metadata:
 spec:
   interval: 30m
   url: "https://gitlab.fuzzball.enterprises/fuzzlab/gitops.git"
+  #url: "https://github.com/sepffuzzball/fuzzlab-gitops.git"
   ref:
     branch: "main"
   ignore: |
