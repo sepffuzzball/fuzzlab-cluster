@@ -5,7 +5,7 @@ metadata:
   name: bjw-s
   namespace: flux-system
 spec:
-  #type: oci
-  #url: oci://ghcr.io/bjw-s/helm
+  type: oci
+  url: oci://ghcr.io/bjw-s/helm
   interval: 5m
-  url: https://bernd-schorgers.github.io/helm-charts/
+  #url: https://bernd-schorgers.github.io/helm-charts/
