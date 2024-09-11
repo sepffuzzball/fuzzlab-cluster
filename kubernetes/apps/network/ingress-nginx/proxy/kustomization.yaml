@@ -10,6 +10,7 @@ resources:
   - ./config/dockge.yaml
   - ./config/frigate.yaml
   - ./config/home.yaml
+  - ./config/kasm.yaml
   - ./config/kvm.yaml
   - ./config/powerwall.yaml
   - ./config/pve.yaml
