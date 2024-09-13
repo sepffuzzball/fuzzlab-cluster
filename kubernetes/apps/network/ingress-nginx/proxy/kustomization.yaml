@@ -9,6 +9,7 @@ resources:
   - ./config/dat.yaml
   - ./config/dockge.yaml
   - ./config/frigate.yaml
+  - ./config/gitlab.yaml
   - ./config/home.yaml
   - ./config/kasm.yaml
   - ./config/kvm.yaml
