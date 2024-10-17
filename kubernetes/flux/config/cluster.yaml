@@ -6,7 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: "https://gitlab.fuzzball.enterprises/fuzzlab/cluster.git"
+  url: "https://forge.fuzzball.enterprises/sepfy/fuzzlab-cluster.git"
+  #url: "https://gitlab.fuzzball.enterprises/fuzzlab/cluster.git"
   #url: "https://github.com/sepffuzzball/fuzzlab-cluster.git"
   ref:
     branch: "main"
