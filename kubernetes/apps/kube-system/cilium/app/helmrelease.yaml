@@ -27,7 +27,7 @@ spec:
     bpf:
       masquerade: true
     cluster:
-      name: home-kubernetes
+      name: fuzzlab-cluster
       id: 1
     containerRuntime:
       integration: containerd
