@@ -18,7 +18,7 @@ metadata:
   name: proxy-matrix
   namespace: default
 spec:
-  ingressClassName: fbs
+  ingressClassName: external
   rules:
     - host: matrix.${SECRET_DOMAIN_FBS}
       http:
