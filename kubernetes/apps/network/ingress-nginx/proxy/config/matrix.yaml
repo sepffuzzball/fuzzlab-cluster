@@ -15,7 +15,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
     external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBS}"
-  name: matrix
+  name: proxy-matrix
   namespace: default
 spec:
   ingressClassName: fbs

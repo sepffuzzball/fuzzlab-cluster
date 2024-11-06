@@ -15,7 +15,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/upstream-vhost: ${FORGE_ADDR}
     external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBE}"
-  name: forge
+  name: proxy-forge
   namespace: default
 spec:
   ingressClassName: fbe
