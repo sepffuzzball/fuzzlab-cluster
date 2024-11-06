@@ -14,7 +14,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
-    external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_FBS}"
+    external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN_FBS}"
   name: proxy-matrix
   namespace: default
 spec:
