@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: ingress-nginx-fbs
-  namespace: network
 spec:
   interval: 30m
   chart:
@@ -23,18 +22,21 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  dependsOn:
+    - name: cloudflared
+      namespace: network
   values:
     fullnameOverride: ingress-nginx-fbs
     controller:
       replicaCount: 1
       service:
         annotations:
-         # external-dns-fbe.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_FBE}"
+          external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN_FBS}"
           io.cilium/lb-ipam-ips: "10.0.2.15"
         externalTrafficPolicy: Cluster
       ingressClassResource:
-        name: fbe
-        default: true
+        name: fbs
+        default: false
         controllerValue: k8s.io/fbs
       admissionWebhooks:
         objectSelector:
@@ -68,7 +70,7 @@ spec:
           namespaceSelector:
             any: true
       extraArgs:
-        default-ssl-certificate: "network/${SECRET_DOMAIN_FBE/./-}-production-tls"
+        default-ssl-certificate: "network/${SECRET_DOMAIN_FBS/./-}-production-tls"
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
