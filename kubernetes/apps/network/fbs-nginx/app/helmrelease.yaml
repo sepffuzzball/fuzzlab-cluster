@@ -88,6 +88,13 @@ spec:
             subPath: config.yml
             readOnly: true
 
+      config-dir:
+        enabled: true
+        existingClaim: fbs-nginx-config
+        globalMounts:
+          - path: /etc/nginx/conf.d
+            readOnly: true
+
       files:
         enabled: true
         existingClaim: fbs-nginx-files
