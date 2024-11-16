@@ -88,21 +88,13 @@ spec:
             subPath: config.yml
             readOnly: true
 
-      #config-map:
-      #  type: nfs
-      #  server: ${NFS_IP}
-      #  path: /config/nginx/conf.d
-      #  globalMounts:
-      #    - path: /etc/nginx/conf.d
-      #      readOnly: true
+      files:
+        enabled: true
+        existingClaim: fbs-nginx-files
+        globalMounts:
+          - path: /var/www
+            readOnly: true
 
-      #public-files:
-      #  type: nfs
-      #  server: ${NFS_IP}
-      #  path: /config/nginx/www
-      #  globalMounts:
-      #    - path: /var/www/
-      #      readOnly: true
       logs:
         enabled: true
         type: emptyDir
