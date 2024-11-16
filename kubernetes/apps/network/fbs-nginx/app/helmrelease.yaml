@@ -78,6 +78,12 @@ spec:
                 service:
                   identifier: app
                   port: http
+          - host: "matrix.${SECRET_DOMAIN_FBS}"
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
 
     persistence:
       config:
