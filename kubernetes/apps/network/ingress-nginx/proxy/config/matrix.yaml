@@ -13,7 +13,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
+    #nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/configuration-snippet: |
       proxy_pass "http://${MATRIX_ADDR}:8448";

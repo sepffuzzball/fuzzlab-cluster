@@ -13,7 +13,7 @@ resources:
   - ./config/home.yaml
   - ./config/kasm.yaml
   - ./config/kvm.yaml
-  - ./config/matrix.yaml
+#  - ./config/matrix.yaml
   - ./config/powerwall.yaml
   - ./config/pve.yaml
   - ./config/notes.yaml
