@@ -13,13 +13,14 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
+    #nginx.ingress.kubernetes.io/upstream-vhost: ${MATRIX_ADDR}
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_pass "http://${MATRIX_ADDR}:8448";
       proxy_set_header "X-Forwarded-For $remote_addr";
       proxy_set_header "X-Forwarded-Proto $scheme";
       proxy_set_header "Host $host";
-      client_max_body_size "50M";
+      client_max_body_size "500M";
     external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN_FBS}"
   name: proxy-matrix
   namespace: default
@@ -29,7 +30,8 @@ spec:
     - host: matrix.${SECRET_DOMAIN_FBS}
       http:
         paths:
-          - pathType: Prefix
+          #- pathType: Prefix
+          - pathType: ImplementationSpecific
             path: /
             backend:
               service:
