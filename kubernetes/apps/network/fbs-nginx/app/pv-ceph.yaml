@@ -43,7 +43,7 @@ spec:
       "rootPath": /volumes/csi/k8s-network/fbs-nginx/files
     # volumeHandle can be anything, need not to be same
     # as PV name or volume name. keeping same for brevity
-    volumeHandle: owncloud
+    volumeHandle: fbs-nginx-f
 
 ---
 apiVersion: v1
@@ -90,4 +90,4 @@ spec:
       "rootPath": /volumes/csi/k8s-network/fbs-nginx/config
     # volumeHandle can be anything, need not to be same
     # as PV name or volume name. keeping same for brevity
-    volumeHandle: owncloud
+    volumeHandle: fbs-nginx-c
