@@ -12,7 +12,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/upstream-vhost: ${DUMBDROP_ADDR}
     external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
   name: proxy-dumbdrop
