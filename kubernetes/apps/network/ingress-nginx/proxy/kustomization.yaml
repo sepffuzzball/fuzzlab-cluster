@@ -10,6 +10,7 @@ resources:
   - ./config/dockge.yaml
   - ./config/dumbdrop.yaml
   - ./config/frigate.yaml
+  - ./config/fzbl.yaml
   - ./config/gitlab.yaml
   - ./config/home.yaml
   - ./config/kasm.yaml
