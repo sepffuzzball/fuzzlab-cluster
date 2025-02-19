@@ -35,3 +35,4 @@ data:
   SWAG_ADDR: "10.0.2.111"
   TIMEZONE: "America/New_York"
   WORKKVM_ADDR: "10.0.2.120"
+  SVC_RUSTDESK_ADDR: "10.96.10.10"
