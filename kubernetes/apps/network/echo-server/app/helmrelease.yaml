@@ -104,3 +104,16 @@ spec:
         tls:
           - hosts:
               - *host
+      fbe:
+        enabled: true
+        className: fbe
+        hosts:
+          - host: &host "{{ .Release.Name }}-internal.${SECRET_DOMAIN_FBE}"
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
