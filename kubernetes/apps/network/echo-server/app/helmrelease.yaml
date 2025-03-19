@@ -108,7 +108,7 @@ spec:
         enabled: true
         className: fbe
         hosts:
-          - host: &host "{{ .Release.Name }}-internal.${SECRET_DOMAIN_FBE}"
+          - host: &host "{{ .Release.Name }}-fbe.${SECRET_DOMAIN_FBE}"
             paths:
               - path: /
                 service:
