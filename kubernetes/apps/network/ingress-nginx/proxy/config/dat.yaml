@@ -20,7 +20,7 @@ metadata:
 spec:
   ingressClassName: fbe
   rules:
-    - host: &host dat.${SECRET_DOMAIN_FBE}/ui
+    - host: &host dat.${SECRET_DOMAIN_FBE}
       http:
         paths:
           - pathType: Prefix
